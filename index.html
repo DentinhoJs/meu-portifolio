@@ -8,7 +8,7 @@
   <meta name="msapplication-navbutton-color" content="#1C1C1C">
   <meta name="apple-mobile-web-app-status-bar-style" content="#1C1C1C">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="style.css">
   <title>Portfolio Website</title>
 
   <style>
@@ -41,7 +41,7 @@
 <body class="blur" onclick="removeBlurAndPlayMusic()">
   <section class="home">
     <div class="home-img">
-      <img src="imagens/mainn.jpg" alt="Italo Almeida">
+      <img src="main.jpg" alt="Italo Almeida">
     </div>
     <div class="home-content">
       <h1 style="font-size: 2.1em;">Olá, sou <span>Italo Almeida</span></h1>
@@ -67,7 +67,7 @@
     </div>
   </section>
 
-  <audio id="music" src="musica/song.mp3"></audio>
+  <audio id="music" src="musica.mp3"></audio>
 
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script>
@@ -84,8 +84,9 @@
       // Remove o desfoque da tela
       document.body.classList.replace('blur', 'no-blur');
 
-      // Toca a música
+      // Toca a música com volume baixo
       const music = document.getElementById('music');
+      music.volume = 0.2; // Define o volume para 0.2 (20%)
       music.play();
 
       // Remove o evento de clique para evitar repetição
