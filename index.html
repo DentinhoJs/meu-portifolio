@@ -1,59 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#1C1C1C">
   <meta name="msapplication-navbutton-color" content="#1C1C1C">
   <meta name="apple-mobile-web-app-status-bar-style" content="#1C1C1C">
-</head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="style.css">
   <title>Portfolio Website</title>
+
   <style>
-    /* Adicionando estilo para o cursor */
+    /* Efeito de desfoque inicial */
+    .blur {
+      filter: blur(10px);
+      transition: filter 0.5s ease;
+    }
+
+    /* Remover desfoque */
+    .no-blur {
+      filter: none;
+    }
+
+    /* Estilo do cursor da animação de digitação */
     .typed-cursor {
       font-weight: 100;
-      color: #000; /* Cor do cursor */
-      animation: blink 0.7s steps(1) infinite; /* Efeito de piscar */
+      color: #000;
+      animation: blink 0.7s steps(1) infinite;
     }
 
     @keyframes blink {
       50% {
-        opacity: 0; /* Faz o cursor piscar */
+        opacity: 0;
       }
     }
   </style>
 </head>
-<body>
+
+<body class="blur" onclick="removeBlurAndPlayMusic()">
   <section class="home">
     <div class="home-img">
-      <img src="mainn.jpg" alt="Italo Almeida">
+      <img src="main.jpg" alt="Italo Almeida">
     </div>
     <div class="home-content">
       <h1 style="font-size: 2.1em;">Olá, sou <span>Italo Almeida</span></h1>
-      <div class="input"></div> <!-- Elemento para o efeito de digitação -->
-      <p style="font-size: 1em;">Sou programador especializado em Node.js, com experiência na criação de bots para Discord que são totalmente personalizáveis. Meu foco é desenvolver soluções adaptáveis que atendam às necessidades específicas dos usuários, proporcionando uma experiência única e interativa.</p>
+      <div class="input"></div>
+      <p style="font-size: 1em;">
+        Sou programador especializado em Node.js, com experiência na criação de bots para Discord que são totalmente
+        personalizáveis. Meu foco é desenvolver soluções adaptáveis que atendam às necessidades específicas dos usuários,
+        proporcionando uma experiência única e interativa.
+      </p>
       <div class="social-icons">
-        <a href="https://github.com/Dentinhojs" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://discord.gg/aFCBujG8b7" target="_blank" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-        <a href="https://instagram.com/italo__almeida_" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://github.com/Dentinhojs" target="_blank" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://discord.gg/aFCBujG8b7" target="_blank" aria-label="Discord">
+          <i class="fa-brands fa-discord"></i>
+        </a>
+        <a href="https://instagram.com/italo__almeida_" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
       </div>
-      <a href="https://wa.me/5531983218051?text=Ol%C3%A1%20quero%20contratar%20um%20Servi%C3%A7o%20de%20Bots%20Personalizados" class="btn" target="_blank">Contrate-me</a>
+      <a href="https://wa.me/5531983218051?text=Ol%C3%A1%20quero%20contratar%20um%20Servi%C3%A7o%20de%20Bots%20Personalizados"
+        class="btn" target="_blank">Contrate-me</a>
     </div>
   </section>
+
+  <audio id="music" src="musica.mp3"></audio>
 
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script>
     const typed = new Typed(".input", {
-      strings: ["Developer NodeJs", "Developer HTML CSS JS", "Web Developer"], // Textos que aparecerão de forma aleatória
+      strings: ["Developer NodeJs", "Developer HTML CSS JS", "Web Developer"],
       typeSpeed: 70,
       backSpeed: 55,
       loop: true,
-      showCursor: true, // Exibe o cursor
-      cursorChar: 'ha', // Define o caractere do cursor
+      showCursor: true,
+      cursorChar: 'ha',
     });
+
+    function removeBlurAndPlayMusic() {
+      // Remove o desfoque da tela
+      document.body.classList.replace('blur', 'no-blur');
+
+      // Toca a música
+      const music = document.getElementById('music');
+      music.play();
+
+      // Remove o evento de clique para evitar repetição
+      document.body.onclick = null;
+    }
   </script>
 </body>
+
 </html>
